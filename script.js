@@ -13,8 +13,14 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    return prompt("Enter rock, paper, or scissors: ").toLowerCase();
+function getHumanChoice() {
+    let choice = prompt("Enter rock, paper, or scissors:").toLowerCase();
+    if (["rock", "paper", "scissors"].includes(choice)) {
+        return choice;
+    } else {
+        alert("Invalid choice! Please enter rock, paper, or scissors.");
+        return getHumanChoice();
+    }
 }
 
 
@@ -22,7 +28,7 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
-    if(humanChoice == computerChoice){
+    if(humanChoice === computerChoice){
         return console.log("It's a tie!");
     }
 
@@ -61,9 +67,15 @@ function playGame(){
         else if(winner === "computer"){
             computerScore++;
         }
-
-        console.log(`\nFinal Results:\nPlayer: ${humanScore} | Computer: ${computerScore}`);
+        console.log(`\nScore After Round ${round}:\nPlayer: ${humanScore} | Computer: ${computerScore}`);
     }
+    console.log("\nFinal Results");
+    if(humanScore > computerScore){
+        console.log("You Won!");
+    }else if(computerScore > humanScore){
+        console.log("You Lose!");
+    }else
+        console.log("Tie Game!");
 }
 
 playGame();
