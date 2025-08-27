@@ -18,8 +18,8 @@ function getHumanChoice(){
 }
 
 
-const humanScore = 0;
-const computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
     if(humanChoice == computerChoice){
@@ -43,8 +43,27 @@ function playRound(humanChoice, computerChoice){
     return "computer";
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-const result = playRound(humanSelection, computerSelection);
+function playGame(){
+    console.log("Let's play rock-paper-scissors!");
+    
+    for(var round = 1; round <= 5; round++){
+        console.log(`\nRound ${round}!`);
 
+        const computerChoice = getComputerChoice();
+        const humanChoice = getHumanChoice();
+
+        const winner = playRound(humanChoice, computerChoice);
+
+        if(winner === "player"){
+            humanScore++;
+        }
+        else if(winner === "computer"){
+            computerScore++;
+        }
+
+        console.log(`\nFinal Results:\nPlayer: ${humanScore} | Computer: ${computerScore}`);
+    }
+}
+
+playGame();
