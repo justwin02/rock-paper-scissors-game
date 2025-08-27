@@ -14,13 +14,14 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    return prompt("Enter rock, paper, or scissors: ").toLowerCase;
+    return prompt("Enter rock, paper, or scissors: ").toLowerCase();
 }
 
 
-console.log(getHumanChoice());
+const humanScore = 0;
+const computerScore = 0;
 
-
-// function getRoundWinner(getComputerChoice, getHumanChoice){
-//     if(getComputerChoice)
+// function getRoundWinner(getComputerChoice(), getHumanChoice()){
+//     if()
+//     return log
 // }
