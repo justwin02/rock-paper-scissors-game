@@ -17,8 +17,11 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
+    const resultsDiv = document.getElementById("results");
+    const scoreDiv = document.getElementById("score"); 
+
     if(humanChoice === computerChoice){
-        return console.log("It's a tie!");
+        resultsDiv.textContent = "It's a tie!";
     }
 
     if(
@@ -26,16 +29,33 @@ function playRound(humanChoice, computerChoice){
         ((humanChoice === "scissors") && (computerChoice === "paper")) ||
         ((humanChoice === "paper") && (computerChoice === "rock"))
     ){
-        console.log("You win! " + `${humanChoice.charAt(0).toUpperCase() 
-            + humanChoice.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() 
-            + computerChoice.slice(1)}!` );
-        return "player";
+        humanScore++;
+        resultsDiv.textContent = `You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}!`;
+    }else{
+        computerScore++;
+        resultsDiv.textContent = `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}!`;
     }
 
-    console.log("You lose! " + `${computerChoice.charAt(0).toUpperCase() 
-        + computerChoice.slice(1)} beats ${humanChoice.charAt(0).toUpperCase() 
-        + humanChoice.slice(1)}!` );
-    return "computer";
+    scoreDiv.textContent = `Player: ${humanScore} | Computer ${computerScore}`;
+
+    if(humanScore === 5 || computerChoice === 5){
+        if(humanScore === 5){
+            resultsDiv.textContent = `You won the game!`;
+        }else{
+            resultsDiv.textContent = `You lost the game!`;
+        }
+        disableButtons();
+    }
+}
+
+function capitalize(word){
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function disableButtons(){
+    document.getElementById("rock").disabled = true;
+    document.getElementById("paper").disabled = true;
+    document.getElementById("scissors").disabled = true;
 }
 
 const rockBtn = document.getElementById("rock");
@@ -44,27 +64,18 @@ const scissorsBtn = document.getElementById("scissors");
 
 
 function playGame(){
-    console.log("Let's play rock-paper-scissors!");
     
     rockBtn.addEventListener('click', function(){
-        playRound("rock", getComputerChoice);
+        playRound("rock", getComputerChoice());
     });
 
     paperBtn.addEventListener('click', function(){
-        playRound("paper", getComputerChoice);
+        playRound("paper", getComputerChoice());
     });
 
     scissorsBtn.addEventListener('click', function(){
-        playRound("scissors", getComputerChoice);
+        playRound("scissors", getComputerChoice());
     });
-    
-    console.log("\nFinal Results");
-    if(humanScore > computerScore){
-        console.log("You Won!");
-    }else if(computerScore > humanScore){
-        console.log("You Lose!");
-    }else
-        console.log("Tie Game!");
 }
 
 playGame();
