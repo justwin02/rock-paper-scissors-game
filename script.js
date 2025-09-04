@@ -49,26 +49,14 @@ function playRound(humanChoice, computerChoice){
     return "computer";
 }
 
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
+
 
 function playGame(){
     console.log("Let's play rock-paper-scissors!");
     
-    for(var round = 1; round <= 5; round++){
-        console.log(`\nRound ${round}!`);
-
-        const computerChoice = getComputerChoice();
-        const humanChoice = getHumanChoice();
-
-        const winner = playRound(humanChoice, computerChoice);
-
-        if(winner === "player"){
-            humanScore++;
-        }
-        else if(winner === "computer"){
-            computerScore++;
-        }
-        console.log(`\nScore After Round ${round}:\nPlayer: ${humanScore} | Computer: ${computerScore}`);
-    }
     console.log("\nFinal Results");
     if(humanScore > computerScore){
         console.log("You Won!");
