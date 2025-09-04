@@ -13,17 +13,6 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice() {
-    let choice = prompt("Enter rock, paper, or scissors:").toLowerCase();
-    if (["rock", "paper", "scissors"].includes(choice)) {
-        return choice;
-    } else {
-        alert("Invalid choice! Please enter rock, paper, or scissors.");
-        return getHumanChoice();
-    }
-}
-
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -56,6 +45,18 @@ const scissorsBtn = document.getElementById("scissors");
 
 function playGame(){
     console.log("Let's play rock-paper-scissors!");
+    
+    rockBtn.addEventListener('click', function(){
+        playRound("rock", getComputerChoice);
+    });
+
+    paperBtn.addEventListener('click', function(){
+        playRound("paper", getComputerChoice);
+    });
+
+    scissorsBtn.addEventListener('click', function(){
+        playRound("scissors", getComputerChoice);
+    });
     
     console.log("\nFinal Results");
     if(humanScore > computerScore){
