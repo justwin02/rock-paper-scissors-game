@@ -38,7 +38,7 @@ function playRound(humanChoice, computerChoice){
 
     scoreDiv.textContent = `Player: ${humanScore} | Computer ${computerScore}`;
 
-    if(humanScore === 5 || computerChoice === 5){
+    if(humanScore === 5 || computerScore === 5){
         if(humanScore === 5){
             resultsDiv.textContent = `You won the game!`;
         }else{
